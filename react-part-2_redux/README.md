@@ -16,4 +16,4 @@ npm run dev
 
 ````
 
-you can access to (http://localhost:3000)[http://localhost:3000]
+you can access to [http://localhost:3000](http://localhost:3000)
