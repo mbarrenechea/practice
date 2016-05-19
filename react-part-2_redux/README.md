@@ -1,7 +1,6 @@
-# ReactJS Talk. Part 1
+# ReactJS Talk. Part 2 redux and react-router
 
-In this talk we see the react principles and flux architecture.
-In the example we implement an application, using the flux architecture and react components.
+In this talk we see the react-router and redux libraries.
 
 ## Installation and execution
 
@@ -17,4 +16,4 @@ npm run dev
 
 ````
 
-you can access to (http://localhost:8080)[http://localhost:8080]
+you can access to (http://localhost:3000)[http://localhost:3000]
