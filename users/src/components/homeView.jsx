@@ -8,6 +8,15 @@ class HomeView extends React.Component {
     componentWillMount() {
         this.props.getUsersList();
     }
+    
+    /**
+     * @param  {e}
+     * @return null
+     */
+    onClickDeleteUser(e) {
+        e && e.preventDefault();
+        this.props.deleteUser(e.currentTarget.dataset.id);
+    }
 
     render() {
         return <div>
@@ -16,7 +25,7 @@ class HomeView extends React.Component {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Owner</th>
+                            <th>Job</th>
                             <th colSpan="3">Actions</th>
                         </tr>
                     </thead>
@@ -27,7 +36,7 @@ class HomeView extends React.Component {
                                 <td>{row.job}</td>
                                 <td><Link to={`/users/${row.id}`}>Show</Link></td>
                                 <td><Link to={`/users/edit/${row.id}`}>Edit</Link></td>
-                                <td><button>Delete</button></td>
+                                <td><button onClick={this.onClickDeleteUser.bind(this)} data-id={row.id}>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>

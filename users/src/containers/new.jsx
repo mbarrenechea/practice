@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import New from '../components/newView';
-import {postUserNew} from '../actions/users';
+import {newUser} from '../actions/users';
 
 const mapStateToProps = (state) => {
 	return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		postUserNew: (options) => (dispatch(postUserNew(options)))
+		newUser: (options) => (dispatch(newUser(options)))
 	};
 };
 

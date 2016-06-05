@@ -1,4 +1,4 @@
-import {USER_LIST, USER_SHOW, USER_NEW} from '../constants';
+import {USER_LIST, USER_SHOW, USER_NEW, USER_DELETE} from '../constants';
 
 const initialState = {
   user_list: null,
@@ -11,10 +11,25 @@ export default function(state = initialState, action) {
     switch (action.type) {
         case USER_LIST:
             return Object.assign({}, state, {user_list: action.payload.user_list});
+
         case USER_SHOW:
             return Object.assign({}, state, {user_show: action.payload.user_show});
-        case USER_NEW:
+
+        case USER_NEW: 
             return Object.assign({}, state, {user_new: action.payload.user_new});
+
+        case USER_DELETE:
+            let user_list = state.user_list;
+            let user_deleted = action.payload.user_delete;
+
+            let new_user_list = user_list.filter(function(user) {
+              return (user.id != user_deleted.id)
+            });            
+
+            console.log(new_user_list);
+
+            return Object.assign({}, state, {user_list: new_user_list});
+
         default:
             return state;
     }
