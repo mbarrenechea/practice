@@ -26,6 +26,7 @@ export function getUserDetail(id) {
         dispatch({type: LOADING, payload: true});
 
         $.get(API + id).then(function(data) {
+            console.log(data);
             dispatch({
                 type: USER_SHOW,
                 payload: {
@@ -53,7 +54,7 @@ export function newUser(user) {
                 dispatch({
                     type: USER_NEW,
                     payload: {
-                        user_update: data
+                        user_new: data
                     }
                 });
                 dispatch({

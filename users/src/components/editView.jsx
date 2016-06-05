@@ -3,18 +3,47 @@
 import React from 'react';
 
 class EditView extends React.Component {
-
     componentWillMount(){
       this.props.getUserDetail(this.props.params.id);
     }
-
-    onSubmitNewUser(e) {
+		
+		/**
+		 * UI EVENTS
+		 */
+		
+		/**
+		 * onSubmitNewUser
+		 * @param  {e [object]}
+		 */
+		onSubmitNewUser(e) {
     	e && e.preventDefault();
     	var user = this.props.user_show;
     	var currentUser = Object.assign({}, user, this.serialize(e.currentTarget));
     	this.props.updateUser(currentUser);
     }
 
+		/**
+		 * onChange
+		 * @param  {e [object]}
+		 */
+    onChangeName(e) {
+    	e && e.preventDefault();    	
+    	var user = this.props.user_show;
+    	console.log(this.state);
+    	user.name = e.currentTarget.value;
+    }
+
+    render(){
+			return <div>
+			  <h2>Edit</h2>
+			  <form onSubmit={this.onSubmitNewUser.bind(this)}>
+			  	<input type="text" onChange={this.onChangeName.bind(this)} name="name" value={this.props.user_show && this.props.user_show.name}/>
+			  	<button type="submit">Update</button>
+			  </form>
+			</div>;
+		}
+	
+		// HELPER
 		serialize(form) {
 			if (!form || form.nodeName !== "FORM") {
 				return;
@@ -77,15 +106,6 @@ class EditView extends React.Component {
 			return obj;
 		}    
 
-    render(){
-			return <div>
-			  <h2>Edit</h2>
-			  <form onSubmit={this.onSubmitNewUser.bind(this)}>
-			  	<input type="text" name="name" defaultValue={this.props.user_show && this.props.user_show.name}/>
-			  	<button type="submit">Update</button>
-			  </form>
-			</div>;
-		}
 };
 
 export default EditView;

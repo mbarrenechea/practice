@@ -9,14 +9,14 @@ class ShowView extends React.Component {
     }
 
     render(){
-        return <div>
-                <h2>Show</h2>
-                {this.props.user_show && <div>
-                    <h3>Name: {this.props.user_show.name}</h3>
-                </div>}
+    return <div>
+        <h2>Show</h2>
+        {this.props.user_show && <div>
+            <h3>Name: {this.props.user_show.name}</h3>
+        </div>}
 
-            </div>;
-        }
+        </div>;
+    }
 };
 
 export default ShowView;

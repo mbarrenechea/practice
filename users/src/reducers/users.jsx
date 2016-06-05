@@ -16,10 +16,10 @@ export default function(state = initialState, action) {
             return Object.assign({}, state, {user_show: action.payload.user_show});
 
         case USER_NEW: 
-            return Object.assign({}, state, {user_new: action.payload.user_new});
+            return Object.assign({}, state, {user_show: action.payload.user_show});
 
         case USER_UPDATE: 
-            return Object.assign({}, state, {user_update: action.payload.user_new});
+            return Object.assign({}, state, {user_update: action.payload.user_update});
 
         case USER_DELETE:
             let user_list = state.user_list;
