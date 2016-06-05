@@ -5,6 +5,7 @@ import React from 'react';
 class EditView extends React.Component {
     componentWillMount(){
       this.props.getUserDetail(this.props.params.id);
+      this.props.getJobsList();
     }
 		
 		/**
@@ -28,9 +29,16 @@ class EditView extends React.Component {
 		 */
     onChangeName(e) {
     	e && e.preventDefault();    	
-    	var user = this.props.user_show;
-    	console.log(this.state);
-    	user.name = e.currentTarget.value;
+    	console.log(e.currentTarget.value)
+    }
+
+		/**
+		 * onChange
+		 * @param  {e [object]}
+		 */
+    onChangeJob(e) {
+    	e && e.preventDefault();    	
+    	console.log(e.currentTarget.value)
     }
 
     render(){
@@ -38,6 +46,11 @@ class EditView extends React.Component {
 			  <h2>Edit</h2>
 			  <form onSubmit={this.onSubmitNewUser.bind(this)}>
 			  	<input type="text" onChange={this.onChangeName.bind(this)} name="name" value={this.props.user_show && this.props.user_show.name}/>
+			  	<select name="job" onChange={this.onChangeJob.bind(this)} value={this.props.user_show && this.props.user_show.job}>
+            {this.props.jobs_list && this.props.jobs_list.map((job, i) => (
+            	<option key={i} value={job}>{job}</option>
+            ))}						
+			  	</select>
 			  	<button type="submit">Update</button>
 			  </form>
 			</div>;

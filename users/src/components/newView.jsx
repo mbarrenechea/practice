@@ -3,24 +3,52 @@
 import React from 'react';
 
 class NewView extends React.Component {
-    onSubmitNewUser(e) {
+    componentWillMount(){
+      this.props.getJobsList();
+    }
+		/**
+		 * UI EVENTS
+		 */
+		
+		/**
+		 * onSubmitNewUser
+		 * @param  {e [object]}
+		 */
+		onSubmitNewUser(e) {
     	e && e.preventDefault();
-    	var currentUser = this.serialize(e.currentTarget);
-    	console.log(currentUser);
+    	var user = this.props.user_show;
+    	var currentUser = Object.assign({}, user, this.serialize(e.currentTarget));
     	this.props.newUser(currentUser);
     }
+
+		/**
+		 * onChange
+		 * @param  {e [object]}
+		 */
+    onChangeName(e) {
+    	e && e.preventDefault();    	
+    	console.log(e.currentTarget.value)
+    }
+
+		/**
+		 * onChange
+		 * @param  {e [object]}
+		 */
+    onChangeJob(e) {
+    	e && e.preventDefault();    	
+    	console.log(e.currentTarget.value)
+    }
+
 
     render(){
 			return <div>
 			  <h2>Edit</h2>
 			  <form onSubmit={this.onSubmitNewUser.bind(this)}>
 			  	<input type="text" name="name" defaultValue={this.props.user_show && this.props.user_show.name}/>
-			  	<select name="job" id="job-select">
-						<option value="job1">Job 1</option>
-						<option value="job2">Job 2</option>
-						<option value="job3">Job 3</option>
-						<option value="job4">Job 4</option>
-						<option value="job5">Job 5</option>
+			  	<select name="job" onChange={this.onChangeJob.bind(this)} value={this.props.user_show && this.props.user_show.job}>
+            {this.props.jobs_list && this.props.jobs_list.map((job, i) => (
+            	<option key={i} value={job}>{job}</option>
+            ))}						
 			  	</select>
 			  	<button type="submit">New</button>
 			  </form>
