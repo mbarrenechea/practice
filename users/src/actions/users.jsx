@@ -1,4 +1,4 @@
-import {USER_LIST, USER_SHOW, USER_NEW, USER_DELETE, USER_UPDATE, LOADING, API} from '../constants';
+import {USER_LIST, USER_SHOW, USER_NEW, USER_DELETE, USER_UPDATE, LOADING, USERAPI} from '../constants';
 import $ from 'jquery';
 import Promise from 'bluebird'
 
@@ -6,7 +6,7 @@ export function getUsersList() {
     return function(dispatch){
         dispatch({type: LOADING, payload: true});
 
-        $.get(API).then(function(data){
+        $.get(USERAPI).then(function(data){
             dispatch({
                 type: USER_LIST,
                 payload:{
@@ -25,7 +25,7 @@ export function getUserDetail(id) {
     return function(dispatch) {
         dispatch({type: LOADING, payload: true});
 
-        $.get(API + id).then(function(data) {
+        $.get(USERAPI + id).then(function(data) {
             console.log(data);
             dispatch({
                 type: USER_SHOW,
@@ -47,7 +47,7 @@ export function newUser(user) {
         dispatch({type: LOADING, payload: true});
 
         $.ajax({
-            url: API,
+            url: USERAPI,
             type: 'POST',
             data: user,
             success: function(data) {
@@ -71,7 +71,7 @@ export function updateUser(user) {
         dispatch({type: LOADING, payload: true});
 
         $.ajax({
-            url: API + user.id,
+            url: USERAPI + user.id,
             type: 'PUT',
             data: user,            
             success: function(data) {
@@ -95,7 +95,7 @@ export function deleteUser(id) {
         dispatch({type: LOADING, payload: true});
 
         $.ajax({
-            url: API + id,
+            url: USERAPI + id,
             type: 'DELETE',
             success: function(data) {
                 dispatch({

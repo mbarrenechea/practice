@@ -1,5 +1,6 @@
 // Global
-export const API = 'http://45.32.235.206:8000/api/users/';
+export const USERAPI = 'http://45.32.235.206:8000/api/users/';
+export const JOBAPI = 'http://45.32.235.206:8000/api/jobs/';
 export const LOADING = 'loading';
 
 // Users
