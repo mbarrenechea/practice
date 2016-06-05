@@ -5,29 +5,28 @@ import {Link} from 'react-router';
 
 class Home extends React.Component {
 
-    componentWillMount(){
-        this.props.init();
+    componentWillMount() {
+        this.props.getUsersList();
     }
 
-    render(){
+    render() {
         return <div>
-
                 <h2>Home</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Owner</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.repositories && this.props.repositories.map((row, i) => (
+                        {this.props.user_list && this.props.user_list.map((row, i) => (
                             <tr key={i}>
                                 <td>{row.name}</td>
-                                <td>{row.full_name}</td>
-                                <td>
-                                    <Link to={`/detail/${row.id}`}>Detail</Link>
-                                </td>
+                                <td>{row.job}</td>
+                                <td><Link to={`/detail/${row.id}`}>Detail</Link></td>
+                                <td><Link to={`/detail/${row.id}`}>Detail</Link></td>
                             </tr>
                         ))}
                     </tbody>

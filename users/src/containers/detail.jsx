@@ -2,18 +2,18 @@
 import { connect } from 'react-redux';
 
 import Detail from '../components/detailView';
-import {getDetail} from '../actions/repositories';
+import {getUserDetail} from '../actions/users';
 
 const mapStateToProps = (state) => {
 	return {
-		detail: state.repositories.detail
+		user_detail: state.users.user_detail
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 
 	return {
-		getDetail: (id) => (dispatch(getDetail(id)))
+		getUserDetail: (id) => (dispatch(getUserDetail(id)))
 	};
 };
 

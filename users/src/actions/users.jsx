@@ -1,17 +1,19 @@
-import {INIT, LOADING, DETAIL} from '../constants';
+import {USERS, USER_DETAIL, LOADING, API} from '../constants';
 import $ from 'jquery';
+import Promise from 'bluebird'
 
-export function init() {
+export function getUsersList() {
     return function(dispatch){
         dispatch({
             type: LOADING,
             payload: true
         });
-        $.get('https://api.github.com/repositories').then(function(data){
+
+        $.get(API).then(function(data){
             dispatch({
-                type: INIT,
+                type: USERS,
                 payload:{
-                    repositories: data
+                    user_list: data
                 }
             });
             dispatch({
@@ -20,17 +22,17 @@ export function init() {
             });
         });
     }
-
 };
 
-export function getDetail(id) {
+export function getUserDetail(id) {
     return function(dispatch) {
         dispatch({type: LOADING, payload: true});
-        $.get('https://api.github.com/repositories/' + id).then(function(data) {
+
+        $.get(API + id).then(function(data) {
             dispatch({
-                type: DETAIL,
+                type: USER_DETAIL,
                 payload: {
-                    detail: data
+                    user_detail: data
                 }
             });
             dispatch({type: LOADING, payload: false});
