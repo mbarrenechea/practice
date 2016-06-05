@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import EditView from '../components/editView';
-import {getUserDetail} from '../actions/users';
+import {getUserDetail, updateUser} from '../actions/users';
 
 const mapStateToProps = (state) => {
 	return {
@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 
 	return {
-		getUserDetail: (id) => (dispatch(getUserDetail(id)))
+		getUserDetail: (id) => (dispatch(getUserDetail(id))),
+		updateUser: (user) => (dispatch(updateUser(user)))
 	};
 };
 
