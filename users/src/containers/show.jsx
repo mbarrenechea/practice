@@ -1,22 +1,23 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import Home from '../components/homeView';
-import {getUsersList} from '../actions/users';
+import Show from '../components/showView';
+import {getUserShow} from '../actions/users';
 
 const mapStateToProps = (state) => {
 	return {
-		user_list : state.users.user_list
+		user_show: state.users.user_show
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
+
 	return {
-		getUsersList: () => (dispatch(getUsersList()))
+		getUserShow: (id) => (dispatch(getUserShow(id)))
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Home);
+)(Show);

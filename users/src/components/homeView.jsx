@@ -3,7 +3,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-class Home extends React.Component {
+class HomeView extends React.Component {
 
     componentWillMount() {
         this.props.getUsersList();
@@ -25,8 +25,7 @@ class Home extends React.Component {
                             <tr key={i}>
                                 <td>{row.name}</td>
                                 <td>{row.job}</td>
-                                <td><Link to={`/detail/${row.id}`}>Detail</Link></td>
-                                <td><Link to={`/detail/${row.id}`}>Detail</Link></td>
+                                <td><Link to={`/users/${row.id}`}>Show</Link></td>
                             </tr>
                         ))}
                     </tbody>
@@ -35,4 +34,4 @@ class Home extends React.Component {
         }
 };
 
-export default Home;
+export default HomeView;

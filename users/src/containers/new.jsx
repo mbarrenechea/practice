@@ -1,23 +1,22 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import Detail from '../components/detailView';
-import {getUserDetail} from '../actions/users';
+import New from '../components/newView';
+import {postUserNew} from '../actions/users';
 
 const mapStateToProps = (state) => {
 	return {
-		user_detail: state.users.user_detail
+		user_new: state.users.user_new
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-
 	return {
-		getUserDetail: (id) => (dispatch(getUserDetail(id)))
+		postUserNew: (options) => (dispatch(postUserNew(options)))
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Detail);
+)(New);
