@@ -5,7 +5,7 @@ import React from 'react';
 class ShowView extends React.Component {
 
     componentWillMount(){
-        this.props.getUserShow(this.props.params.id);
+        this.props.getUserDetail(this.props.params.id);
     }
 
     render(){

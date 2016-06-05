@@ -1,7 +1,7 @@
 'use strict';
 import { connect } from 'react-redux';
 
-import Show from '../components/showView';
+import EditView from '../components/editView';
 import {getUserDetail} from '../actions/users';
 
 const mapStateToProps = (state) => {
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Show);
+)(EditView);

@@ -4,10 +4,6 @@ import React from 'react';
 
 class NewView extends React.Component {
 
-    componentWillMount(){
-        this.props.postUserNew();
-    }
-
     render(){
         console.log('new');
         return <div>

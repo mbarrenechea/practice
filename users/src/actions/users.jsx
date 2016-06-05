@@ -21,7 +21,7 @@ export function getUsersList() {
     }
 };
 
-export function getUserShow(id) {
+export function getUserDetail(id) {
     return function(dispatch) {
         dispatch({type: LOADING, payload: true});
 
@@ -43,6 +43,45 @@ export function postUserNew(options) {
         dispatch({type: LOADING, payload: true});
 
         $.get(API).then(function(data){
+            dispatch({
+                type: USER_NEW,
+                payload: {
+                    user_new: data
+                }
+            });
+            dispatch({
+                type: LOADING,
+                payload: false
+            });
+        });
+
+
+        // $.post(API, options).then(function(data) {
+        //     console.log('saved')
+        //     dispatch({
+        //         type: USER_NEW,
+        //         payload: {
+        //             user_show: data
+        //         }
+        //     });
+        //     dispatch({type: LOADING, payload: false});
+        // });
+    }
+};
+
+export function deleteUser(id) {
+    return function(dispatch) {
+        dispatch({type: LOADING, payload: true});
+
+        $.ajax({
+            url: API + id,
+            type: 'DELETE',
+            success: function(result) {
+                // Do something with the result
+            }
+        });
+
+        $.ajax({API}).then(function(data){
             dispatch({
                 type: USER_NEW,
                 payload: {

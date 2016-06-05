@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import Home from '../components/homeView';
-import {getUsersList} from '../actions/users';
+import {getUsersList, deleteUser} from '../actions/users';
 
 const mapStateToProps = (state) => {
 	return {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getUsersList: () => (dispatch(getUsersList()))
+		getUsersList: () => (dispatch(getUsersList())),
+		deleteUser: (id) => (dispatch(deleteUser(id)))
 	};
 };
 

@@ -17,7 +17,7 @@ class HomeView extends React.Component {
                         <tr>
                             <th>Name</th>
                             <th>Owner</th>
-                            <th>Actions</th>
+                            <th colSpan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +26,8 @@ class HomeView extends React.Component {
                                 <td>{row.name}</td>
                                 <td>{row.job}</td>
                                 <td><Link to={`/users/${row.id}`}>Show</Link></td>
+                                <td><Link to={`/users/edit/${row.id}`}>Edit</Link></td>
+                                <td><button>Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
