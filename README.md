@@ -1,2 +1,2 @@
-# talks
-Repository with all example code of the differents talks/Workshops of Vizzuality
+# Practice
+Repository with all example code of the differents Practice/Workshops of Vizzuality
