@@ -69,7 +69,6 @@ export function newUser(user) {
 };
 
 export function updateUser(user) {
-    console.log(user);
     return function(dispatch) {
         dispatch({type: LOADING, payload: true});
 
