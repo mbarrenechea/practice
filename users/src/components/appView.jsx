@@ -12,10 +12,11 @@ class AppView extends React.Component {
                 <Link to="/">Home</Link> {' '}
                 <Link to="/users/new">New User</Link>
             </header>
-            {this.props.loading && <span>Loading</span>}
             <div className="content">
                 {this.props.children}
             </div>
+
+            {this.props.loading && <span>Loading</span>}
         </div>
     };
 };

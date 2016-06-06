@@ -15,7 +15,9 @@ class HomeView extends React.Component {
      */
     onClickDeleteUser(e) {
         e && e.preventDefault();
-        this.props.deleteUser(e.currentTarget.dataset.id);
+        if(confirm('Are you sure?')) {
+            this.props.deleteUser(e.currentTarget.dataset.id);    
+        }
     }
 
     render() {
