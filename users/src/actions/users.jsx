@@ -1,5 +1,6 @@
 import {USER_LIST, USER_SHOW, USER_NEW, USER_DELETE, USER_UPDATE, LOADING, USERSAPI} from '../constants';
 import $ from 'jquery';
+import { browserHistory } from 'react-router'
 
 export function getUsersList() {
     return function(dispatch){
@@ -60,12 +61,15 @@ export function newUser(user) {
                     type: LOADING,
                     payload: false
                 });
+
+                browserHistory.push('/');
             }
         });
     }
 };
 
 export function updateUser(user) {
+    console.log(user);
     return function(dispatch) {
         dispatch({type: LOADING, payload: true});
 
@@ -77,13 +81,26 @@ export function updateUser(user) {
                 dispatch({
                     type: USER_UPDATE,
                     payload: {
-                        user_update: data
+                        user_show: data
                     }
                 });
                 dispatch({
                     type: LOADING,
                     payload: false
                 });
+
+                browserHistory.push('/');
+            }
+        });
+    }
+};
+
+export function updateCurrentUser(user) {
+    return function(dispatch) {
+        dispatch({
+            type: USER_UPDATE,
+            payload: {
+                user_show: user
             }
         });
     }
@@ -100,7 +117,7 @@ export function deleteUser(id) {
                 dispatch({
                     type: USER_DELETE,
                     payload: {
-                        user_delete: data
+                        user_show: data
                     }
                 });
                 dispatch({

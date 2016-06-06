@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import New from '../components/newView';
-import {newUser} from '../actions/users';
+import {newUser, updateCurrentUser} from '../actions/users';
 import {getJobsList} from '../actions/jobs';
 
 const mapStateToProps = (state) => {
@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getJobsList: () => (dispatch(getJobsList())),		
-		newUser: (user) => (dispatch(newUser(user)))
+		newUser: (user) => (dispatch(newUser(user))),
+		updateCurrentUser: (user) => (dispatch(updateCurrentUser(user)))
 	};
 };
 

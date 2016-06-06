@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+
 class EditView extends React.Component {
     componentWillMount(){
       this.props.getUserDetail(this.props.params.id);
@@ -16,7 +17,7 @@ class EditView extends React.Component {
 		 * onSubmitNewUser
 		 * @param  {e [object]}
 		 */
-		onSubmitNewUser(e) {
+		onSubmitEditUser(e) {
     	e && e.preventDefault();
     	var user = this.props.user_show;
     	var currentUser = Object.assign({}, user, this.serialize(e.currentTarget));
@@ -28,23 +29,30 @@ class EditView extends React.Component {
 		 * @param  {e [object]}
 		 */
     onChangeName(e) {
-    	e && e.preventDefault();    	
-    	console.log(e.currentTarget.value)
-    }
-
+    	e && e.preventDefault();  
+    	var user = this.props.user_show; 
+    	var currentUser = Object.assign({}, user, {
+    		name: e.currentTarget.value
+    	});
+    	this.props.updateCurrentUser(currentUser);
+		}
 		/**
 		 * onChange
 		 * @param  {e [object]}
 		 */
     onChangeJob(e) {
     	e && e.preventDefault();    	
-    	console.log(e.currentTarget.value)
+    	var user = this.props.user_show;
+    	var currentUser = Object.assign({}, user, {
+    		job: e.currentTarget.value
+    	});
+    	this.props.updateCurrentUser(currentUser);
     }
 
     render(){
 			return <div>
 			  <h2>Edit</h2>
-			  <form onSubmit={this.onSubmitNewUser.bind(this)}>
+			  <form onSubmit={this.onSubmitEditUser.bind(this)}>
 			  	<input type="text" onChange={this.onChangeName.bind(this)} name="name" value={this.props.user_show && this.props.user_show.name}/>
 			  	<select name="job" onChange={this.onChangeJob.bind(this)} value={this.props.user_show && this.props.user_show.job}>
             {this.props.jobs_list && this.props.jobs_list.map((job, i) => (

@@ -19,13 +19,13 @@ export default function(state = initialState, action) {
             return Object.assign({}, state, {user_show: action.payload.user_show});
 
         case USER_UPDATE: 
-            return Object.assign({}, state, {user_update: action.payload.user_update});
+            return Object.assign({}, state, {user_show: action.payload.user_show});
 
         case USER_DELETE:
             let user_list = state.user_list;
-            let user_deleted = action.payload.user_delete;
+            let user_show = action.payload.user_show;
             let new_user_list = user_list && user_list.filter(function(user) {
-              return (user.id != user_deleted.id)
+              return (user.id != user_show.id)
             });            
 
             return Object.assign({}, state, {user_list: new_user_list});

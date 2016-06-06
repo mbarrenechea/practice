@@ -26,8 +26,12 @@ class NewView extends React.Component {
 		 * @param  {e [object]}
 		 */
     onChangeName(e) {
-    	e && e.preventDefault();    	
-    	console.log(e.currentTarget.value)
+    	e && e.preventDefault();  
+    	var user = this.props.user_show; 
+    	var currentUser = Object.assign({}, user, {
+    		name: e.currentTarget.value
+    	});
+    	this.props.updateCurrentUser(currentUser);
     }
 
 		/**
@@ -36,7 +40,11 @@ class NewView extends React.Component {
 		 */
     onChangeJob(e) {
     	e && e.preventDefault();    	
-    	console.log(e.currentTarget.value)
+    	var user = this.props.user_show;
+    	var currentUser = Object.assign({}, user, {
+    		job: e.currentTarget.value
+    	});
+    	this.props.updateCurrentUser(currentUser);
     }
 
 

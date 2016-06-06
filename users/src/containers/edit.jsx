@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import EditView from '../components/editView';
-import {getUserDetail, updateUser} from '../actions/users';
+import {getUserDetail, updateUser, updateCurrentUser} from '../actions/users';
 import {getJobsList} from '../actions/jobs';
 
 
@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		getUserDetail: (id) => (dispatch(getUserDetail(id))),
 		getJobsList: () => (dispatch(getJobsList())),
-		updateUser: (user) => (dispatch(updateUser(user)))
+		updateUser: (user) => (dispatch(updateUser(user))),
+		updateCurrentUser: (user) => (dispatch(updateCurrentUser(user)))
 	};
 };
 
